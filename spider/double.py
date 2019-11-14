@@ -9,7 +9,6 @@ import requests
 from rdao import Dao
 from spider.util.html import to_html
 from lxml import etree
-from tqdm import tqdm, trange
 
 
 class Chromosphere():
@@ -30,12 +29,7 @@ class Chromosphere():
         red_ball_list = root.xpath("//tr[@class='t_tr1']/td[@class='t_cfont2']/text()")
         blue_ball_list = root.xpath("//tr[@class='t_tr1']/td[@class='t_cfont4'][1]/text()")
         date_list = root.xpath("//tr[@class='t_tr1']/td[last()]/text()")
-        for i in trange(len(phase_list)):
-            # item = {
-            #     'phase': phase_list[i],
-            #     'number': red_ball_list[i*6:i*6+6] + [blue_ball_list[i]],
-            #     'date': date_list[i],
-            # }
+        for i in range(len(phase_list)):
             name = phase_list[i]
             value = '_'.join(red_ball_list[i * 6:i * 6 + 6] + [blue_ball_list[i]]) + '#' + date_list[i]
             self.dao.write(name, value)

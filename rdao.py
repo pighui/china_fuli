@@ -4,10 +4,12 @@
 # __time__ = 2019-11-14 下午2:30
 import redis
 
+from settings import *
+
 
 class Dao():
     def __init__(self):
-        self.conn = redis.Redis(db=9, decode_responses=True)
+        self.conn = redis.Redis(host=HOST, port=PORT, db=DB, decode_responses=True)
 
     def write(self, name, value):
         self.conn.setnx(name, value)
