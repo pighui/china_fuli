@@ -17,9 +17,11 @@ git clone git@github.com:pighui/china_fuli.git
 
 至少python3.5以上
 
-## 2.安装mysql
+## 2.安装redis
 
-至少mysql3.7以上
+```bash
+sudo apt install redis
+```
 
 ## 3.修改配置文件
 
